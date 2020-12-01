@@ -2,8 +2,8 @@
 
 //Переменные LESS
 @primary: #0097A7;
-@danger: #FF1744;
-@warning: #EF6C00;
+@danger: @primary;
+@warning: @primary;
 @success: #00E676;
 
 @theme-btn: #9CCC65;
@@ -16,14 +16,18 @@
   padding: 0;
 }
 
+.my-hover-mixin() {
+  &:hover {
+    background: @primary;
+    color: @theme-btn;
+  }
+}
+
 .button-styles(@type){
   // .main__button--danger
   &--@{type} {
     border-color: @@type;
-    &:hover {
-      background: @@type;
-      color: #fff;
-    }
+    .my-hover-mixin();
   }
 }
 
@@ -35,6 +39,8 @@
     }
   }
 }
+
+
 
 * {
   transition: .3s all;
